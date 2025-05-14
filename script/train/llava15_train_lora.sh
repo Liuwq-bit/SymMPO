@@ -41,7 +41,7 @@ deepspeed --include localhost:$gpu_vis  --master_port $MASTER_PORT \
     --bf16 True \
     --mm_projector_type mlp2x_gelu \
     --mm_vision_select_layer -2 \
-    --output_dir symmpo/$task_name-$exp_name \
+    --output_dir result/symmpo/$task_name-$exp_name \
     --num_train_epochs 10 \
     --per_device_train_batch_size 4 \
     --per_device_eval_batch_size 4 \
