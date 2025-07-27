@@ -9,7 +9,7 @@ vision_tower=${3:-"openai/clip-vit-large-patch14-336"}
 raw_data_path=${4:-"demo_data/similar"}
 gpu_vis=${5:-"0,1,2,3"}
 learning_rate=${6:-5e-6}
-lambda=${7:-0.5}
+lamda=${7:-0.5}
 data_dir=${raw_data_path}-with-logps
 
 echo "task_name: "$task_name
