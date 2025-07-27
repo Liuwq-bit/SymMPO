@@ -13,7 +13,7 @@ from transformers import Trainer
 from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 from torch import Tensor
 from torch.nn import Module
-from utils.utils import is_main_process
+from ..beit_utils import is_main_process
 
 from muffin.eval.muffin_inference_logp import get_batch_logps, get_batch_logps_minicpm
 

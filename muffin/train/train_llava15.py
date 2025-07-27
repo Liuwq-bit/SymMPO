@@ -14,7 +14,7 @@ from dataclasses import dataclass, field
 from torch.utils.data import Dataset
 
 from muffin.train.args import ModelArguments, DataArguments, TrainingArguments
-from utils.utils import is_main_process, get_rank
+from ..beit_utils import is_main_process, get_rank
 from muffin.train.trainers import LLaVA15DPOTrainer
 from muffin.data.datasets import SymMPODataset
 from muffin.train.train_utils import encode_multimodal_preference_sample, preprocess_v1

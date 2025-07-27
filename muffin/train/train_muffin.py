@@ -25,8 +25,8 @@ from typing import Dict, Optional, Sequence, List
 from dataclasses import dataclass, field
 from torch.utils.data import Dataset
 
-from utils.utils import is_main_process, get_rank
-from utils.diff_lib import get_diff_ids, color_print_diff_pair, split_into_words
+from ..beit_utils import is_main_process, get_rank
+from ..diff_lib import get_diff_ids, color_print_diff_pair, split_into_words
 from muffin.eval.muffin_inference_logp import preference_collator_fn, concate_pad
 
 DEFAULT_PAD_TOKEN = "[PAD]"
