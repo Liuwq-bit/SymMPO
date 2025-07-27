@@ -2,14 +2,15 @@
 
 echo "----------Start llava15_train----------"
 
-task_name=${1:-"llava15_7b_DPO"}
-exp_name=${2:-"llava15_symmpo_main_sd_image_5e-7"}
-ckpt=liuhaotian/llava-v1.5-7b
-raw_data_path=${3:-""}
+task_name=llava15_7b_DPO
+exp_name=${1:-"logps"}
+ckpt=${2:-"liuhaotian/llava-v1.5-7b"}
+vision_tower=${3:-"openai/clip-vit-large-patch14-336"}
+raw_data_path=${4:-"demo_data/similar"}
+gpu_vis=${5:-"0,1,2,3"}
+learning_rate=${6:-5e-6}
+lambda=${7:-0.5}
 data_dir=${raw_data_path}-with-logps
-gpu_vis=${4:-"0,1,2,3"}
-learning_rate=${5:-"5e-6"}
-lamda=${6:-"0.5"}
 
 echo "task_name: "$task_name
 echo "exp_name: "$exp_name
@@ -38,7 +39,7 @@ deepspeed --include localhost:$gpu_vis  --master_port $MASTER_PORT \
     --raw_data_path $raw_data_path \
     --data_dir $data_dir \
     --image_folder not_used \
-    --vision_tower openai/clip-vit-large-patch14-336 \
+    --vision_tower $vision_tower \
     --mm_use_im_start_end False \
     --mm_use_im_patch_token False \
     --save_only_model True \

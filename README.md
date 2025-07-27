@@ -1,11 +1,10 @@
 # Mitigating Hallucination Through Theory-Consistent Symmetric Multimodal Preference Optimization
 
-
-## Abstract
-
 Direct Preference Optimization (DPO) has emerged as an effective approach for mitigating hallucination in Multimodal Large Language Models (MLLMs). Although existing methods have achieved significant progress by utilizing vision-oriented contrastive objectives for enhancing MLLMs' attention to visual inputs and hence reducing hallucination, they suffer from non-rigorous optimization objective function and indirect preference supervision. To address these limitations, we propose a Symmetric Multimodal Preference Optimization (SymMPO), which conducts symmetric preference learning with direct preference supervision (i.e., response pairs) for visual understanding enhancement, while maintaining rigorous theoretical alignment with standard DPO. In  addition to conventional ordinal preference learning, SymMPO introduces a preference margin consistency loss to quantitatively regulate the preference gap between symmetric preference pairs. Comprehensive evaluation across five benchmarks demonstrate SymMPO's superior performance, validating its effectiveness in hallucination mitigation of MLLMs.
 
 ## Install
+
+Our codebase requires CUDA version 11.8.
 
 ```bash
 conda create -n symmpo python=3.10 -y
@@ -17,11 +16,25 @@ pip install -r requirements.txt
 
 **1. Prepare data**
 
-We will release the training data after the double-blind review.
+We provide demo data in this repository for quick setup and testing. The full training dataset will be released after the double-blind review process.
 
-**2. Download model from [LLaVA](https://huggingface.co/liuhaotian/llava-v1.5-7b) and vision tower [CLIP](https://huggingface.co/openai/clip-vit-large-patch14-336)**.
+**2. Download the pretrained models**
 
-**3. Training**
+Download LLaVA model from [liuhaotian/llava-v1.5-7b](https://huggingface.co/liuhaotian/llava-v1.5-7b).
+
+Download the vision tower model (CLIP) from [openai/clip-vit-large-patch14-336](https://huggingface.co/openai/clip-vit-large-patch14-336).
+
+**3. Modify model paths**
+
+To integrate the downloaded models, update the following paths in the code:
+
+1. Set the path to the LLaVA model in the 3rd line of `run.sh`.
+2. Set the path to the CLIP model:
+   - In the 4th line of `run.sh`.
+   - In the 6th line of `llava/model/multimodal_encoder/builder.py`.
+   - In the 14th line of `llava/model/multimodal_encoder/clip_encoder.py`.
+
+**4. Start Training**
 
 Run the following command to start training.
 

@@ -5,12 +5,19 @@ echo "----------Start llava15_train----------"
 task_name=llava15_7b_DPO
 exp_name=${1:-"logps"}
 ckpt=${2:-"liuhaotian/llava-v1.5-7b"}
-raw_data_path=${3:-""}
+vision_tower=${3:-"openai/clip-vit-large-patch14-336"}
+raw_data_path=${4:-"demo_data/similar"}
+gpu_vis=${5:-"0,1,2,3"}
+learning_rate=${6:-5e-6}
+lambda=${7:-0.5}
 data_dir=${raw_data_path}-with-logps
 
+echo "task_name: "$task_name
 echo "exp_name: "$exp_name
-echo "ckpt: "$ckpt
 echo "raw_data_path: "$raw_data_path
+echo "gpu_vis: "$gpu_vis
+echo "learning_rate: "$learning_rate
+echo "lamda: "$lamda
 
 MASTER_PORT_START=10000
 MASTER_PORT_END=65535
@@ -21,7 +28,6 @@ MASTER_PORT="$(
 		shuf | head -n 1
 )"
 
-gpu_vis=0,1,2,3
 
 PYTHONPATH=./:$PYTHONPATH \
 HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 \
@@ -32,7 +38,7 @@ deepspeed --include localhost:$gpu_vis  --master_port $MASTER_PORT \
     --raw_data_path $raw_data_path \
     --data_dir $data_dir \
     --image_folder not_used \
-    --vision_tower openai/clip-vit-large-patch14-336 \
+    --vision_tower $vision_tower \
     --mm_use_im_start_end False \
     --mm_use_im_patch_token False \
     --fully_tune False \
