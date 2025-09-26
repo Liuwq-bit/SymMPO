@@ -3,9 +3,9 @@
 <div align="center" style="font-size: 15pt">
 
 
-<a href='https://arxiv.org/abs/2411.17265'><img src='https://img.shields.io/badge/Paper-PDF-purple'></a>
-<a href='https://huggingface.co/datasets/Tanh01/SymMPO_Dataset'><img src='https://img.shields.io/badge/Dataset-HF-Green'></a>
-<a href='https://huggingface.co/Tanh01/SymMPO_similar'><img src='https://img.shields.io/badge/Model-7B-orange'></a>
+<a href='https://arxiv.org/abs/2411.17265'><img src='https://img.shields.io/badge/Paper-Arxiv-red'></a>
+<a href='https://huggingface.co/Tanh01/SymMPO_similar'><img src='https://img.shields.io/badge/Model-7B/13B-orange'></a>
+<a href='https://huggingface.co/datasets/Tanh01/SymMPO_Dataset'><img src='https://img.shields.io/badge/Dataset-HF-yellow'></a>
 
 </div>
 
