@@ -1,6 +1,20 @@
 # Mitigating Hallucination Through Theory-Consistent Symmetric Multimodal Preference Optimization
 
-Direct Preference Optimization (DPO) has emerged as an effective approach for mitigating hallucination in Multimodal Large Language Models (MLLMs). Although existing methods have achieved significant progress by utilizing vision-oriented contrastive objectives for enhancing MLLMs' attention to visual inputs and hence reducing hallucination, they suffer from non-rigorous optimization objective function and indirect preference supervision. To address these limitations, we propose a Symmetric Multimodal Preference Optimization (SymMPO), which conducts symmetric preference learning with direct preference supervision (i.e., response pairs) for visual understanding enhancement, while maintaining rigorous theoretical alignment with standard DPO. In  addition to conventional ordinal preference learning, SymMPO introduces a preference margin consistency loss to quantitatively regulate the preference gap between symmetric preference pairs. Comprehensive evaluation across five benchmarks demonstrate SymMPO's superior performance, validating its effectiveness in hallucination mitigation of MLLMs.
+<div align="center" style="font-size: 15pt">
+
+
+<a href='https://arxiv.org/abs/2411.17265'><img src='https://img.shields.io/badge/Paper-PDF-purple'></a>
+<a href='https://huggingface.co/datasets/Tanh01/SymMPO_Dataset'><img src='https://img.shields.io/badge/Dataset-HF-Green'></a>
+<a href='https://huggingface.co/Tanh01/SymMPO_similar'><img src='https://img.shields.io/badge/Model-7B-orange'></a>
+
+</div>
+
+<table align="center">
+    <p align="center">
+      <img src="asset/symmpo.png" width="95%" alt="intro1" />
+    </p>
+</table>
+
 
 ## Install
 
@@ -119,4 +133,22 @@ python script/eval/eval_amber.sh [ckpt_path] [base_path if use lora ckpt else "N
 
 ```bash
 python script/eval/eval_mmstar.sh [ckpt_path] [base_path if use lora ckpt else "No"] [GPU_ID]
+```
+
+## Acknowledgement <!-- omit in toc -->
+
+- [TPO](https://github.com/topic-overwrite/topic-level-overwrite) and [RLAIF-V](https://github.com/RLHF-V/RLAIF-V): This work extends the implementations provided by these projects, whose concise and effective DPO solutions are greatly appreciated.
+- [LLaVA](https://github.com/haotian-liu/LLaVA): The training process was carried out on the LLaVA model, and we acknowledge the valuable contributions of this work to our research.
+
+
+## Citation
+
+If you find our work helpful, please consider citing it:
+```bibtex
+@article{liu2025mitigating,
+  title={Mitigating Hallucination Through Theory-Consistent Symmetric Multimodal Preference Optimization},
+  author={Liu, Wenqi and Song, Xuemeng and Li, Jiaxi and Wei, Yinwei and Zheng, Na and Yin, Jianhua and Nie, Liqiang},
+  journal={arXiv preprint arXiv:2506.11712},
+  year={2025}
+}
 ```
